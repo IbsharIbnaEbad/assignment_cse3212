@@ -31,51 +31,45 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text(
-            'data'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 300,
-                width: 400,
-                child: Image.asset('assets/images/q.jpg'),
-              ),
-              Padding(
-
-                padding: const EdgeInsets.all(12.0),
-                child: Text('we are looking for sotruj',
-                  style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),),
-              ),
-
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightBlue, // Background color
-                    foregroundColor: Colors.white
-                  ),
-                  onPressed: () {
-                    Fluttertoast.showToast(
-                        msg: 'toast is on the bottom ',
-                        // toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 22,
-                        backgroundColor: Colors.black,
-                        textColor: Colors.white,
-                        fontSize: 16.0
-                    );
-
-                  },
-                  child: Text('Button')
-              )
-
-            ]
+        title: Center(
+          child: Text('Assignment App'),
         ),
       ),
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          SizedBox(
+            height: 300,
+            width: 400,
+            child: Image.asset('assets/images/q.jpg'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text(
+              'We are looking for sotruj',
+              style: TextStyle(
+                  fontFamily: 'NotoSerif',
+                  fontSize: 25,
 
-
+                ),
+            ),
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightBlue, // Background color
+                  foregroundColor: Colors.white),
+              onPressed: () {
+                Fluttertoast.showToast(
+                    msg: 'toast is on the bottom ',
+                    // toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 22,
+                    backgroundColor: Colors.black,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+              },
+              child: Text('Button'))
+        ]),
+      ),
     );
   }
 }
-
