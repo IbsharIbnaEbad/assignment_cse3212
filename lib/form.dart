@@ -202,7 +202,7 @@ class _FormValidationState extends State<FormValidation> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.blue.shade200,
           );
         },
       );
