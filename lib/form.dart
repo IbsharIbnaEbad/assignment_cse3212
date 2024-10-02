@@ -19,7 +19,7 @@ class _FormValidationState extends State<FormValidation> {
   final _formKey = GlobalKey<FormState>();
 
   final RegExp _emailRegExp = RegExp(
-      r'^(cse_|eee_|thm_|bba_|archi_)\d{16}@lus.ac.bd$'); // Email validation
+      r'^(cse_|eee_|thm_|bba_|archi_)\d{15}@lus.ac.bd$'); // Email validation
   final RegExp _nameRegExp = RegExp(r'^[a-zA-Z]+$'); // First name validation
 
   final RegExp _mobileRegExp =
