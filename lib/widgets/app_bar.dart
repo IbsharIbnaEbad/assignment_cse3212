@@ -24,10 +24,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 20,
+          fontFamily: 'NotoSerifItalic',
+          fontStyle: FontStyle.italic,
         ),
       ),
       centerTitle: true, // Center the title
