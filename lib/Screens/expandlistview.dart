@@ -60,7 +60,7 @@ class ExpandableListView extends StatelessWidget {
               child: Text(
                 category['title'],
                 style: const TextStyle(
-                  fontFamily: 'NotoSerifItalic',
+                  fontFamily: 'NotoSerif',
                   fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.italic,
                   fontSize: 18,
@@ -73,7 +73,7 @@ class ExpandableListView extends StatelessWidget {
                 child: Text(
                   item,
                   style: TextStyle(
-                    fontFamily: 'NotoSerifItalic',
+                    fontFamily: 'NotoSerif',
 
                   ),
                 ),
