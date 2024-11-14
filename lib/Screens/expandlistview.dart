@@ -31,7 +31,7 @@ class ExpandableListView extends StatelessWidget {
       ]
     },
     {
-      "title": "3rd Semester",
+      "title": "3rd Semester ",
       "items": [
         "Data Structures",
         "Data Structures Sessional",
