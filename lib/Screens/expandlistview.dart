@@ -1,8 +1,13 @@
-import 'package:assignment_cse3212/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:assignment_cse3212/widgets/app_bar.dart';
 
-class ExpandableListView extends StatelessWidget {
-  final List<Map<String, dynamic>> semester_Wise_Course = [
+class ExpandableListView extends StatefulWidget {
+  @override
+  _ExpandableListViewState createState() => _ExpandableListViewState();
+}
+
+class _ExpandableListViewState extends State<ExpandableListView> {
+  final List<Map<String, dynamic>> semesterWiseCourse = [
     {
       "title": "1st Semester",
       "items": [
@@ -31,7 +36,7 @@ class ExpandableListView extends StatelessWidget {
       ]
     },
     {
-      "title": "3rd Semester ",
+      "title": "3rd Semester",
       "items": [
         "Data Structures",
         "Data Structures Sessional",
@@ -46,18 +51,32 @@ class ExpandableListView extends StatelessWidget {
     },
   ];
 
+  int? _expandedIndex;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Course in CSE'),
+      appBar: const CustomAppBar(title: 'Course in CSE'),
       body: ListView.builder(
-        itemCount: semester_Wise_Course.length,
+        itemCount: semesterWiseCourse.length,
         itemBuilder: (context, index) {
-          final category = semester_Wise_Course[index];
-          return ExpansionTile(
+          final category = semesterWiseCourse[index];
+          return _buildExpandableItem(category, index);
+        },
+      ),
+    );
+  }
 
-            title: Center(
-              child: Text(
+  Widget _buildExpandableItem(Map<String, dynamic> category, int index) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+      elevation: 4,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
                 category['title'],
                 style: const TextStyle(
                   fontFamily: 'NotoSerif',
@@ -66,23 +85,44 @@ class ExpandableListView extends StatelessWidget {
                   fontSize: 18,
                 ),
               ),
+              trailing: Icon(
+                _expandedIndex == index
+                    ? Icons.arrow_drop_up
+                    : Icons.arrow_drop_down,
+                color: Colors.black,
+              ),
+              onTap: () => _toggleItemExpansion(index),
             ),
-            children: (category['items'] as List<String>)
-                .map((item) => ListTile(
-              title: Center(
-                child: Text(
-                  item,
-                  style: TextStyle(
-                    fontFamily: 'NotoSerif',
-
-                  ),
+            if (_expandedIndex == index)
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: (category['items'] as List<String>).map((item) {
+                    return ListTile(
+                      title: Text(
+                        item,
+                        style: const TextStyle(
+                          fontFamily: 'NotoSerif',
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
               ),
-            ))
-                .toList(),
-          );
-        },
+          ],
+        ),
       ),
     );
+  }
+
+  void _toggleItemExpansion(int index) {
+    setState(() {
+      if (_expandedIndex == index) {
+        _expandedIndex = null;
+      } else {
+        _expandedIndex = index;
+      }
+    });
   }
 }
