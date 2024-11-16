@@ -91,7 +91,7 @@ class _ExpandableListViewState extends State<ExpandableListView> {
                     : Icons.arrow_drop_down,
                 color: Colors.black,
               ),
-              onTap: () => _toggleItemExpansion(index),
+              onTap: () => _toggleItemExpansion(index, category['title']),
             ),
             if (_expandedIndex == index)
               Padding(
@@ -106,6 +106,14 @@ class _ExpandableListViewState extends State<ExpandableListView> {
                           fontFamily: 'NotoSerif',
                         ),
                       ),
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("You selected: $item"),
+                            duration: const Duration(seconds: 2),
+                          ),
+                        );
+                      },
                     );
                   }).toList(),
                 ),
@@ -115,8 +123,7 @@ class _ExpandableListViewState extends State<ExpandableListView> {
       ),
     );
   }
-
-  void _toggleItemExpansion(int index) {
+  void _toggleItemExpansion(int index, String title) {
     setState(() {
       if (_expandedIndex == index) {
         _expandedIndex = null;
@@ -124,5 +131,12 @@ class _ExpandableListViewState extends State<ExpandableListView> {
         _expandedIndex = index;
       }
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("You selected: $title"),
+        duration: const Duration(seconds: 2),
+      ),
+    );
   }
 }
