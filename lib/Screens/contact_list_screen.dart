@@ -1,17 +1,16 @@
-import 'package:assignment_cse3212/Screens/add_new_product_screen.dart';
+import 'package:assignment_cse3212/Screens/add_new_contact_screen.dart';
+import 'package:assignment_cse3212/Screens/course_details_screen.dart';
 import 'package:assignment_cse3212/model/contact_list.dart';
 import 'package:assignment_cse3212/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
-
 class ContactListScreen extends StatelessWidget {
   const ContactListScreen({super.key});
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:const CustomAppBar(title: 'Contact List'),
+      appBar: const CustomAppBar(title: 'Contact List'),
       body: ListView.builder(
         itemCount: contactList.length,
         itemBuilder: (context, index) {
@@ -28,14 +27,19 @@ class ContactListScreen extends StatelessWidget {
               onPressed: () {},
             ),
             onTap: () {
-
+              // Navigate to contact detail screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ContactDetailScreen(contact: contact),
+                ),
+              );
             },
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
           Navigator.push(
             context,
             MaterialPageRoute(
